@@ -1,7 +1,7 @@
 
 // "BMR": "66 + (13.7 X weight in kg) + (5 x height in cm) – (6.8 x age in yrs)"  MALE
 //Women BMR = 655 + (9.6 X weight in kg) + (1.8 x height in cm) – (4.7 x age in yrs)
-export function calculateBMR(gender: string, weight: number, feet: number, inches: number, age: number, activeLevel: string){
+export const calculateBMR = (gender: string, weight: number, feet: number, inches: number, age: number, activeLevel: string): number => {
   let lbs = convertWeight(weight, gender)
   let cm = getHeight(feet, inches, gender)
   let yrs = getAge(age, gender)
@@ -23,7 +23,7 @@ function getHeight(feet: number, inches: number, gender: string){
   return 5 * (((feet * 12) + inches) * 2.54)
 }
 
-export function convertWeight(weight: number, gender: string){
+function convertWeight (weight: number, gender: string): number{
   // convert kg to lbs
   if (gender === "female"){
     return 9.6 * (weight / 2.2) 
@@ -31,14 +31,14 @@ export function convertWeight(weight: number, gender: string){
   return 13.7 * (weight / 2.2)
 }
 
-function getAge(age: number, gender: string){
+function getAge(age: number, gender: string): number{
   if (gender === "female"){
     return 4.7 * age 
   }
   return 6.8 * age
 }
 
-export function activityLevel(bmr: number, active: string){
+export const  activityLevel =(bmr: number, active: string): number => {
 //   Sedentary (little to no exercise + work a desk job) = 1.2
 // Lightly Active (light exercise 1-3 days / week) = 1.375
 // Moderately Active (moderate exercise 3-5 days / week) = 1.55
