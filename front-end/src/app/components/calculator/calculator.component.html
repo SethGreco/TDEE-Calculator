@@ -1,5 +1,7 @@
 <div class="flex items-center flex-col pt-10">
-  <div class="box-border h-120 w-120 p-4 border-2 rounded-sm border-slate-600">
+  <div
+    class="flex items-center flex-col box-border h-120 w-120 p-4 border-2 rounded-sm border-gray-400 rounded-lg"
+  >
     <label for="price" class="block text-sm font-medium text-gray-700"
       >Weight</label
     >
@@ -14,7 +16,8 @@
         name="weight"
         id="weight"
         class="focus:ring-indigo-500 focus:border-indigo-500 block pl-7 pr-12 sm:text-sm border-gray-300 rounded-md"
-        placeholder="Weight"
+        placeholder="weight"
+        [(ngModel)]="weight"
       />
     </div>
     <!-- <div class="absolute inset-y-0 right-0 flex items-center">
@@ -37,18 +40,29 @@
         id="age"
         class="focus:ring-indigo-500 focus:border-indigo-500 block pl-7 pr-12 sm:text-sm border-gray-300 rounded-md"
         placeholder="age"
+        [(ngModel)]="age"
       />
     </div>
+
     <label for="height" class="block text-sm font-medium text-gray-700"
       >Height</label
     >
-    <div class="mt-1 relative rounded-md">
+    <div class="mt-1 rounded-md flex justify-center">
       <input
         type="number"
-        name="height"
-        id="height"
-        class="focus:ring-indigo-500 focus:border-indigo-500 block pl-7 pr-12 sm:text-sm border-gray-300 rounded-md"
-        placeholder="height"
+        name="height-feet"
+        id="height-feet"
+        class="w-1/4 focus:ring-indigo-300 focus:border-indigo-300 sm:text-sm mr-2 border-gray-300 rounded-md"
+        placeholder="feet"
+        [(ngModel)]="heightFeet"
+      />
+      <input
+        type="number"
+        name="height-inches"
+        id="height-inches"
+        class="w-1/4 focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm border-gray-300 rounded-md"
+        placeholder="inches"
+        [(ngModel)]="heightInches"
       />
     </div>
     <label for="sex" class="block text-sm font-medium text-gray-700">Sex</label>
@@ -59,6 +73,7 @@
         id="sex"
         class="focus:ring-indigo-500 focus:border-indigo-500 block pl-7 pr-12 sm:text-sm border-gray-300 rounded-md"
         placeholder="sex"
+        [(ngModel)]="sex"
       />
     </div>
     <label for="activity" class="block text-sm font-medium text-gray-700"
@@ -71,10 +86,13 @@
         id="activity"
         class="focus:ring-indigo-500 focus:border-indigo-500 block pl-7 pr-12 sm:text-sm border-gray-300 rounded-md"
         placeholder="activity"
+        [(ngModel)]="activity"
       />
     </div>
     <div class="pt-4">
-      <button class="btn border-primary border-2">Submit</button>
+      <button class="btn border-primary border-2" (click)="inputValues()">
+        Submit
+      </button>
     </div>
   </div>
 </div>
