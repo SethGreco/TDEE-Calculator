@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable, Subscription } from 'rxjs';
 import { BodyMetrics } from 'src/app/models/body-metrics';
+import { ResTdeeBmr } from 'src/app/models/res-tdee-bmr';
+import { TdeeService } from 'src/app/services/tdee.service';
 
 @Component({
   selector: 'app-calculator',
@@ -15,22 +18,28 @@ export class CalculatorComponent implements OnInit {
   activity!: string;
   age!: number;
 
-  constructor() { }
+
+  someDisplayValue$!: Observable<ResTdeeBmr>;
+
+  constructor(private tdeeService: TdeeService) { }
 
   ngOnInit(): void {
   }
 
-  inputValues(): void{
+   inputValues(): void{
     let measurements: BodyMetrics = {
       'weight': this.weight,
       'heightFeet': this.heightFeet,
       'heightInches': this.heightInches,
-      'sex': this.sex,
-      'activity': this.activity,
+      'gender': this.sex,
+      'activeLevel': this.activity,
       'age': this.age
     }
+   
+    const returnValue$ = this.tdeeService.postBodyValues(measurements);
 
-    console.log(measurements)
-  }
+    this.someDisplayValue$ = returnValue$
+    
+    }
 
 }
