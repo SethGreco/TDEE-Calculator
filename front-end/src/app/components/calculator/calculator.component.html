@@ -94,6 +94,9 @@
         Submit
       </button>
     </div>
-    <p *ngIf="someDisplayValue$ | async">{{ someDisplayValue$ }}</p>
+  </div>
+  <div *ngIf="someDisplayValue$ | async as value">
+    <p>bmr = {{ value.bmr }}</p>
+    <p>tdee = {{ value.tdee }}</p>
   </div>
 </div>

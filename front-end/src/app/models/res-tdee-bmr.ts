@@ -1,4 +1,4 @@
 export interface ResTdeeBmr {
-  bmr?: number,
-  tdee?:number,
+  bmr: number,
+  tdee:number,
 }

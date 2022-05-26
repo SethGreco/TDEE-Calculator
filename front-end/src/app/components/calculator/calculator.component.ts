@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable, Subscription } from 'rxjs';
+import { concatMap, Observable, ReplaySubject } from 'rxjs';
 import { BodyMetrics } from 'src/app/models/body-metrics';
 import { ResTdeeBmr } from 'src/app/models/res-tdee-bmr';
 import { TdeeService } from 'src/app/services/tdee.service';
@@ -19,11 +19,16 @@ export class CalculatorComponent implements OnInit {
   age!: number;
 
 
-  someDisplayValue$!: Observable<ResTdeeBmr>;
+  bodyMetricsAction = new ReplaySubject<BodyMetrics>(1);
+  someDisplayValue$: Observable<ResTdeeBmr> = this.bodyMetricsAction
+    .pipe(
+      concatMap(bodyMetrics => this.tdeeService.postBodyValues(bodyMetrics))
+    )
 
   constructor(private tdeeService: TdeeService) { }
 
   ngOnInit(): void {
+    
   }
 
    inputValues(): void{
@@ -35,11 +40,8 @@ export class CalculatorComponent implements OnInit {
       'activeLevel': this.activity,
       'age': this.age
     }
-   
-    const returnValue$ = this.tdeeService.postBodyValues(measurements);
 
-    this.someDisplayValue$ = returnValue$
-    
+    this.bodyMetricsAction.next(measurements)
     }
 
 }
