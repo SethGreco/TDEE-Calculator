@@ -1,6 +1,6 @@
 <div class="flex items-center flex-col pt-10">
   <div
-    class="flex items-center flex-col box-border h-120 w-120 p-4 border-2 rounded-sm border-gray-400 rounded-lg"
+    class="flex items-center flex-col box-border h-120 w-120 p-4 mb-5 border-2 rounded-sm border-gray-400 rounded-lg"
   >
     <label for="price" class="block text-sm font-medium text-gray-700"
       >Weight</label
@@ -95,8 +95,17 @@
       </button>
     </div>
   </div>
-  <div *ngIf="someDisplayValue$ | async as value">
-    <p>bmr = {{ value.bmr }}</p>
-    <p>tdee = {{ value.tdee }}</p>
+  <div
+    *ngIf="someDisplayValue$ | async as result"
+    class="flex items-center flex-col box-border h-120 w-120 p-4 border-2 rounded-sm border-gray-400 rounded-lg"
+  >
+    <label for="price" class="block text-sm font-medium text-gray-700"
+      >Basel Metabolic Rate</label
+    >
+    <p class="text-gray-500 sm:text-sm">bmr = {{ result.bmr }}</p>
+    <label for="price" class="block text-sm font-medium text-gray-700"
+      >Total Daily Energy Exp</label
+    >
+    <p class="sm:text-sm">tdee = {{ result.tdee }}</p>
   </div>
 </div>

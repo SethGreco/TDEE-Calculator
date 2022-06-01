@@ -7,12 +7,14 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CalculatorComponent } from './components/calculator/calculator.component';
+import { MacroComponent } from './components/macro/macro.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    CalculatorComponent
+    CalculatorComponent,
+    MacroComponent
   ],
   imports: [
     BrowserModule,

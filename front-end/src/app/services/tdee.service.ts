@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { BodyMetrics } from '../models/body-metrics';
-import { ResTdeeBmr } from '../models/res-tdee-bmr';
+import { Expenditure } from '../models/expenditure';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +13,7 @@ export class TdeeService {
 
   constructor(private http:HttpClient) {  }
 
-  postBodyValues(bodyMetrics: BodyMetrics): Observable<ResTdeeBmr>{
-    return this.http.post<ResTdeeBmr>(this.url, bodyMetrics);
+  postBodyValues(bodyMetrics: BodyMetrics): Observable<Expenditure>{
+    return this.http.post<Expenditure>(this.url, bodyMetrics);
   }
 }

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { concatMap, Observable, ReplaySubject } from 'rxjs';
 import { BodyMetrics } from 'src/app/models/body-metrics';
-import { ResTdeeBmr } from 'src/app/models/res-tdee-bmr';
+import { Expenditure } from 'src/app/models/expenditure';
 import { TdeeService } from 'src/app/services/tdee.service';
 
 @Component({
@@ -20,7 +20,7 @@ export class CalculatorComponent implements OnInit {
 
 
   bodyMetricsAction = new ReplaySubject<BodyMetrics>(1);
-  someDisplayValue$: Observable<ResTdeeBmr> = this.bodyMetricsAction
+  someDisplayValue$: Observable<Expenditure> = this.bodyMetricsAction
     .pipe(
       concatMap(bodyMetrics => this.tdeeService.postBodyValues(bodyMetrics))
     )
